@@ -1,9 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
-
-
 interface Ipopable{
   ObjectPool<GameObject> ObjectPool { get; set; }
   void setpool(ObjectPool<GameObject> pool);
@@ -14,9 +13,7 @@ interface Ipopable{
 public class LB1 : bubble, Ipopable 
 {
    public ObjectPool<GameObject> ObjectPool { get; set; }
-    PoppableObjectSpawner pool;
-   
-
+    
 
     public void pop()
     {
@@ -29,9 +26,9 @@ public class LB1 : bubble, Ipopable
         Vector3 targetScale = Vector3.zero;
         float elapsedTime = 0f;
 
-        while (elapsedTime < 1)
+        while (elapsedTime < 0.5f)
         {
-            float t = elapsedTime / 1;
+            float t = elapsedTime / 0.5f;
             obj.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -41,8 +38,6 @@ public class LB1 : bubble, Ipopable
         obj.SetActive(false);
         obj.transform.localScale = originalScale; 
         base.pop(ObjectPool);
-
-
     }
 
     public void setpool(ObjectPool<GameObject> pool)
@@ -51,14 +46,17 @@ public class LB1 : bubble, Ipopable
     }
 }
 
+public abstract class bubble: MonoBehaviour{
 
+public static event Action<bubble> Onpopscorechange;
+    [SerializeField] int _scoreadded;
 
-public class bubble: MonoBehaviour{ 
+    public int Scoreadded { get => _scoreadded;  }
 
-
- public  virtual void pop(UnityEngine.Pool.ObjectPool<GameObject> pool)
+    public  virtual void pop(UnityEngine.Pool.ObjectPool<GameObject> pool)
     {
         pool.Release(this.gameObject);
+        Onpopscorechange?.Invoke(this);
     }
-
+       
 }

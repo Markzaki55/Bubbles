@@ -277,8 +277,6 @@ public class PoppableObjectSpawner : MonoBehaviour
 
     private void OnGetPoppableObject(GameObject poppableObject)
     {
-        Debug.Log("object been get");
-
         poppableObject.SetActive(true);
     }
 

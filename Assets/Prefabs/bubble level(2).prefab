@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f77fdffff96aa840866cbb39160011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreadded: 3
   popCounter: 5
 --- !u!1 &4425848033567417832
 GameObject:
