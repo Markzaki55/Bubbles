@@ -9,7 +9,22 @@ interface Ipopable{
     void pop();
     
 }
-   
+public abstract class bubble : MonoBehaviour
+{
+
+    public static event Action<bubble> Onpopscorechange;
+    [SerializeField] int _scoreadded;
+
+    public int Scoreadded { get => _scoreadded; }
+
+    public virtual void pop(UnityEngine.Pool.ObjectPool<GameObject> pool)
+    {
+        pool.Release(this.gameObject);
+        Onpopscorechange?.Invoke(this);
+    }
+
+}
+
 public class LB1 : bubble, Ipopable 
 {
    public ObjectPool<GameObject> ObjectPool { get; set; }
@@ -46,17 +61,3 @@ public class LB1 : bubble, Ipopable
     }
 }
 
-public abstract class bubble: MonoBehaviour{
-
-public static event Action<bubble> Onpopscorechange;
-    [SerializeField] int _scoreadded;
-
-    public int Scoreadded { get => _scoreadded;  }
-
-    public  virtual void pop(UnityEngine.Pool.ObjectPool<GameObject> pool)
-    {
-        pool.Release(this.gameObject);
-        Onpopscorechange?.Invoke(this);
-    }
-       
-}
