@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,8 @@ public class BotCollider : MonoBehaviour
 {
     int misscounter;
     [SerializeField] TextMeshProUGUI misscounterT;
+
+    static event Action<int> OnPopMiss;
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,8 +21,5 @@ public class BotCollider : MonoBehaviour
             misscounterT.text = "Miss :"+ misscounter;
         }
     }
-
-
-
 }
 

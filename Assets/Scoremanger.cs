@@ -16,7 +16,7 @@ public class Scoremanger : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+        bubble.Onpopscorechange -= IncreaseScore;
     }
 
     public int GetScore()

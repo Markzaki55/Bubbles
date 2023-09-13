@@ -12,8 +12,6 @@ public class BL2 : bubble, Ipopable
     private int currentPopCount = 0;
     private TextMeshProUGUI textMesh;
     
-    
-
     private void Start()
     {
         textMesh = GetComponentInChildren<TextMeshProUGUI>();
