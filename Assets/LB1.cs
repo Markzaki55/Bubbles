@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Pool;
 interface Ipopable{
@@ -11,6 +11,7 @@ interface Ipopable{
 }
 public abstract class bubble : MonoBehaviour
 {
+
 
     public static event Action<bubble> Onpopscorechange;
     [SerializeField] int _scoreadded;
@@ -27,7 +28,8 @@ public abstract class bubble : MonoBehaviour
 
 public class LB1 : bubble, Ipopable 
 {
-   public ObjectPool<GameObject> ObjectPool { get; set; }
+    [SerializeField] float popanim = 0.5f;   
+        public ObjectPool<GameObject> ObjectPool { get; set; }
     
 
     public void pop()
@@ -41,9 +43,9 @@ public class LB1 : bubble, Ipopable
         Vector3 targetScale = Vector3.zero;
         float elapsedTime = 0f;
 
-        while (elapsedTime < 0.5f)
+        while (elapsedTime < popanim)
         {
-            float t = elapsedTime / 0.5f;
+            float t = elapsedTime / popanim;
             obj.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
             elapsedTime += Time.deltaTime;
             yield return null;

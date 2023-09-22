@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using TMPro;
 using UnityEngine.Pool;
-using System;
+
 
 public class BL2 : bubble, Ipopable
 {
@@ -11,6 +10,7 @@ public class BL2 : bubble, Ipopable
     public int popCounter = 3; // Number of pops before release
     private int currentPopCount = 0;
     private TextMeshProUGUI textMesh;
+    
     
     private void Start()
     {

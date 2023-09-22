@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
-using UnityEngine.Pool;
+
 
 public class BotCollider : MonoBehaviour
 {
@@ -16,7 +15,8 @@ public class BotCollider : MonoBehaviour
     {
         if (collision.CompareTag("bubble"))
         {
-            collision.gameObject.GetComponent<Ipopable>().ObjectPool.Release(collision.gameObject);
+            GameObject bubble = collision.gameObject;
+            bubble.GetComponent<Ipopable>().ObjectPool.Release(collision.gameObject);
             misscounter++;
             misscounterT.text = "Miss :"+ misscounter;
         }
