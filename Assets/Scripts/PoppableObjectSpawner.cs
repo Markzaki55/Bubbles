@@ -252,6 +252,7 @@ public class PoppableObjectSpawner : MonoBehaviour
 
     public ObjectPool<GameObject> objectPool;
     private Coroutine spawnCoroutine;
+    [SerializeField] GameObject BubblesPool;
 
     private void Start()
     {
@@ -262,7 +263,7 @@ public class PoppableObjectSpawner : MonoBehaviour
     private GameObject CreatePoppableObject()
     {
         int prefabIndex = RandomWeightedIndex(spawnChances);
-        GameObject poppableObject = Instantiate(poppablePrefabs[prefabIndex]);
+        GameObject poppableObject = Instantiate(poppablePrefabs[prefabIndex], BubblesPool.transform);
 
         Ipopable poppableScript = poppableObject.GetComponent<Ipopable>();
         if (poppableScript != null)

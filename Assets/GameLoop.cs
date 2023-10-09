@@ -7,23 +7,26 @@ public class GameLoop : MonoBehaviour
 {
     public GameObject LosePanel;
     public bool Gameeded;
-    public static GameLoop instance;
+ //   public static GameLoop instance;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+     
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //    DontDestroyOnLoad(LosePanel);
+        //}
+        //else
+        //{
+        //  //  Destroy(gameObject);
+        //}
         Gameeded = false;
     }
     private void OnEnable()
     {
+        DontDestroyOnLoad(LosePanel);
         BotCollider.OnPopMissMax += HandleLose;
     }
 
@@ -54,5 +57,9 @@ public class GameLoop : MonoBehaviour
     {
         BotCollider.OnPopMissMax -= HandleLose;
     }
-    
+    //private void Reset()
+    //{
+    //    LosePanel.SetActive(false);
+    //}
+
 }
