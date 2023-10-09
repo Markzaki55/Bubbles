@@ -20,6 +20,8 @@ public abstract class bubble : MonoBehaviour
 
     public virtual void pop(UnityEngine.Pool.ObjectPool<GameObject> pool)
     {
+        int rand = UnityEngine.Random.Range(1, 5);
+        SoundManager.PlaySound("pop" + rand);
         pool.Release(this.gameObject);
         Onpopscorechange?.Invoke(this);
     }

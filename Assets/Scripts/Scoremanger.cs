@@ -2,13 +2,11 @@
 using UnityEngine;
 using TMPro;
 
-
-
 public class Scoremanger : MonoBehaviour
 {
     public TextMeshProUGUI Scoretext;
     public TimeRateHandler TimeRate;
-    private int score = 0;
+    public int score = 0;
 
     private void OnEnable()
     {
