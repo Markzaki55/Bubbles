@@ -34,7 +34,12 @@ public class GameLoop : MonoBehaviour
     {
         Gameeded= true;
         int CurrentScore = FindAnyObjectByType<Scoremanger>().score;
-        SaveManger.highScore += CurrentScore;
+        //SaveManger.highScore += CurrentScore;
+        if(CurrentScore > SaveManger.highScore)
+        {
+            SaveManger.highScore = CurrentScore;
+            SaveManger.Save();
+        }
         int highestscore = SaveManger.highScore;
         SaveManger.Save();
         LosePanel.SetActive(true);

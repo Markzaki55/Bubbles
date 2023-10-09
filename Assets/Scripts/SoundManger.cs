@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource soundeffectS;
     [SerializeField] private AudioClip[] sondClips;
+    [SerializeField] GameObject Soundtrack;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(Soundtrack);
         }
         else
         {
